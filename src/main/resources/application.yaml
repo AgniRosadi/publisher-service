@@ -1,0 +1,32 @@
+spring:
+  application:
+    name: publisher-service
+
+  datasource:
+    url: ${SPRING_DATASOURCE_URL}
+    username: ${SPRING_DATASOURCE_USERNAME}
+    password: ${SPRING_DATASOURCE_PASSWORD}
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update   # Hanya untuk dev, production sebaiknya 'validate' atau 'none'
+    show-sql: true
+    open-in-view: false
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+
+  redis:
+    host: localhost
+    port: 6379
+
+  profiles:
+    active: dev   # Supaya nanti bisa bikin application-dev.yml, application-prod.yml
+
+server:
+  port: 8086
+
+logging:
+  level:
+    root: INFO
+    org.springframework.web: DEBUG
+    com.zaxxer.hikari: DEBUG
